@@ -26,12 +26,13 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 ### Creating an EC2 Instance
 
 1. Launch an EC2 instance using the AWS Management Console.
-   add a screenshot
-   ![Screenshot: Welcome Screen](./ScreenShot/creating_instance.png)
+
+   ![Screenshot: Instance](./ScreenShot/creating_instance.png)
 3. Add a key pair for secure SSH access during instance creation.
-   add a screenshot
-4. Connect to the instance using SSH
-   add a scrrenshot
+   ![Screenshot:Key Pair](./ScreenShot/keypair.png) 
+  
+5. Connect to the instance using SSH
+   ![Screenshot: Terminal](./ScreenShot/connect to instance.png)
 
 ### Installing Jenkins
 
@@ -41,7 +42,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    sudo apt-get update
    sudo apt-get install openjdk-11-jdk
 
-   ![Screenshot: Welcome Screen](welcome_jenkins_screen.png)
+   ![Screenshot: Installing Java](./ScreenShot/install_java.png)
 
    - Because Jenkins is made up of Java, we need to install Java on our Ubuntu machine.
   
@@ -56,11 +57,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    ```bash
    sudo apt-get install jenkins
    sudo apt-get update
-
-4. Open the port of the EC2 instance you have created:
-
-   - Go to the security group of your EC2 instance in the AWS Management Console.
-   - In the "Inbound rules" tab, add a custom TCP rule to open the default port (e.g., 8080).
+   ![Screenshot: Installed Jenkins](./ScreenShot/startjenkins.png)
 
 ### Jenkins Setup
 
@@ -69,11 +66,13 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    - Go to your EC2 instance details in the AWS Management Console.
    - Under the "Security groups" section, click on the security group associated with your instance.
    - In the "Inbound rules" tab, add a custom TCP rule for port 8080.
+      ![Screenshot: Inbound Rule](./ScreenShot/Security_port.png)
 
 2. Access Jenkins in your browser:
 
    ```bash
    http://your-instance-ip:8080
+      ![Screenshot: Access Jenkins](./ScreenShot/jenkinsScreen.png)
 
 3. Retrieve the initial admin password:
 
@@ -82,11 +81,15 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 4. Install the suggested plugins and create an admin user.
 
-   ![Screenshot: Plugins](plugins_screenshot.png)
+   ![Screenshot: Plugins](./ScreenShot/InstallPluginsd.png)
 
-5. Start using Jenkins and configure any additional settings as needed.
+5. Create a admin user for jenkins
 
-   ![Screenshot: Welcome Screen](welcome_jenkins_screen.png)
+ ![Screenshot: UserJenkins](Create an Admin User.png)
+ 
+6. Start using Jenkins and configure any additional settings as needed.
+
+   ![Screenshot: Welcome Screen](./ScreenShot/Welcome Jenkins Screen.png)
 
 ### Generating SSH Keys
 
@@ -106,10 +109,12 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 1. Clone the [MERN Stack Project Code](https://github.com/ifeelpankaj/locker) repository from GitHub.
 
+ ![Screenshot: Repo](Git Repo.png)
 2. Go to your GitHub settings:
 
    - Click on your profile picture in the top right corner and select "Settings".
    - Navigate to "SSH and GPG keys" in the left sidebar.
+
 
 3. Add a new SSH key:
 
@@ -117,16 +122,16 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    - In your terminal, open the public key file (usually `~/.ssh/id_rsa.pub`) and copy its content (starts with `ssh-rsa`).
    - Paste the public key into the "Key" field.
    - Give your key a meaningful title and click "Add SSH key".
-
+ ![Screenshot: Plugins](Ssh-Github.png)
 4. Open your Jenkins dashboard:
 
    - Create a new "Freestyle project" by clicking "New Item" on the Jenkins homepage.
-
+ ![Screenshot: Jenkins Project](Create a freestyle project.png)
 5. Configure the project:
 
    - Add a project name and description.
    - Under the "Source Code Management" section, select "Git" and enter your GitHub repository URL.
-
+![Screenshot: Jenkins Description](Create a freestyle project.png)
    - In the "Credentials" dropdown, click "Add" to add your private key. Paste the private key content generated earlier (beginning with `-----BEGIN OPENSSH PRIVATE KEY-----`).
 
    - Save your configuration.
