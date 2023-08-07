@@ -27,6 +27,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 1. Launch an EC2 instance using the AWS Management Console.
    add a screenshot
+   ![Screenshot: Welcome Screen](https://drive.google.com/file/d/1nnTbtt-BJ0BQA7yhFC5IdO7nH0QfPV0m/view?usp=sharing)
 3. Add a key pair for secure SSH access during instance creation.
    add a screenshot
 4. Connect to the instance using SSH
@@ -40,9 +41,9 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    sudo apt-get update
    sudo apt-get install openjdk-11-jdk
 
-   # add Screenshot
+   ![Screenshot: Welcome Screen](welcome_jenkins_screen.png)
 
-   # Because Jenkins is made up of Java, we need to install Java on our Ubuntu machine.
+   - Because Jenkins is made up of Java, we need to install Java on our Ubuntu machine.
   
 2. Set up the location for Jenkins installation:
 
