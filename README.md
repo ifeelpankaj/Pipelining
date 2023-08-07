@@ -42,10 +42,9 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 ### Installing Jenkins
 
 1. Update packages and install Java:
-
-   ```bash
-   sudo apt-get update
-   sudo apt-get install openjdk-11-jdk
+     ```bash
+     sudo apt-get update
+     sudo apt-get install openjdk-11-jdk
 
 ![Screenshot:Key Pair](./ScreenShot/install_java.png) 
 
@@ -54,21 +53,22 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
   
 2. Set up the location for Jenkins installation:
 
-   ```bash
-   curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-   echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+     ```bash
+     curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+     echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > 
+     /dev/null
 
 3. Install Jenkins:
 
-   ```bash
-   sudo apt-get install jenkins
-   sudo apt-get update
+     ```bash
+     sudo apt-get install jenkins
+     sudo apt-get update
 
 4. Start Jenkins
-   
-   ```bash
-   sudo systemctl start jenkins.service
-   sudo systemctl status jenkins
+
+     ```bash
+     sudo systemctl start jenkins.service
+     sudo systemctl status jenkins
    
 ![Screenshot: Installed Jenkins](./ScreenShot/startjenkins.png)
 
@@ -84,15 +84,15 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 2. Access Jenkins in your browser:
 
-   ```bash
-   http://your-instance-ip:8080
+     ```bash
+     http://your-instance-ip:8080
    
 ![Screenshot: Access Jenkins](./ScreenShot/jenkinsScreen.png)
 
 3. Retrieve the initial admin password:
 
-   ```bash
-   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+     ```bash
+     sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 4. Install the suggested plugins and create an admin user.
 
@@ -110,14 +110,14 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 1. Generate SSH keys on your EC2 instance:
 
-   ```bash
-   ssh-keygen
-   cd .ssh
-   ls
-   cat id_rsa
-   cat id_rsa.pub
+     ```bash
+     ssh-keygen
+     cd .ssh
+     ls
+     cat id_rsa
+     cat id_rsa.pub
 
-   # After this, you will get a Public and Private Key.
+- After this, you will get a Public and Private Key.
 
 
 ## Integrating GitHub and Jenkins
@@ -180,9 +180,9 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 1. Install Docker:
 
-   ```bash
-   sudo apt-get install docker.io
-   sudo apt-get update
+     ```bash
+     sudo apt-get install docker.io
+     sudo apt-get update
 
 ### Create a Docker File    
 1. Create a Dockerfile in your project directory. In my project, it's already present.
@@ -192,7 +192,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 2.Build Docker Image:
 
-      ```bash
+     ```bash
       sudo usermod -a -G docker $USER
       sudo reboot
       cd /var/lib/jenkins/workspace/Jenkins-Master
