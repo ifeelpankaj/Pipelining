@@ -28,11 +28,15 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 1. Launch an EC2 instance using the AWS Management Console.
 
    ![Screenshot: Instance](./ScreenShot/creating_instance.png)
+   
 3. Add a key pair for secure SSH access during instance creation.
+
    ![Screenshot:Key Pair](./ScreenShot/keypair.png) 
   
 5. Connect to the instance using SSH
-   ![Screenshot: Terminal](./ScreenShot/connect to instance.png)
+
+ ![Screenshot:Key Pair](./ScreenShot/keypair.png) 
+  
 
 ### Installing Jenkins
 
@@ -85,7 +89,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 5. Create a admin user for jenkins
 
- ![Screenshot: UserJenkins](Create an Admin User.png)
+ ![Screenshot: UserJenkins](./ScreenShot/Create an Admin User.png)
  
 6. Start using Jenkins and configure any additional settings as needed.
 
