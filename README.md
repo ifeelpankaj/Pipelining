@@ -27,7 +27,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 1. Launch an EC2 instance using the AWS Management Console.
    add a screenshot
-   ![Screenshot: Welcome Screen](https://drive.google.com/file/d/1nnTbtt-BJ0BQA7yhFC5IdO7nH0QfPV0m/view?usp=sharing)
+   ![Screenshot: Welcome Screen]([https://drive.google.com/file/d/1nnTbtt-BJ0BQA7yhFC5IdO7nH0QfPV0m/view?usp=sharing](https://res.cloudinary.com/buymybook/image/upload/v1691429084/ScreenShot/creating_instance_ysvyr5.png))
 3. Add a key pair for secure SSH access during instance creation.
    add a screenshot
 4. Connect to the instance using SSH
