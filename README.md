@@ -12,6 +12,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    4. [Generating SSH Keys](#generating-ssh-keys)
    5. [Integrating GitHub and Jenkins](#integrating-github-and-jenkins)
    6. [Automating Docker Build and Run](#automating-docker-build-and-run)
+   7. [Automate Docker Build and Run with Jenkins](#Automation-through-jenkis)
 3. [Conclusion](#conclusion)
 
 ## Prerequisites
@@ -29,11 +30,11 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 ![Screenshot: Instance](./ScreenShot/creating_instance.png)
    
-3. Add a key pair for secure SSH access during instance creation.
+2. Add a key pair for secure SSH access during instance creation.
 
 ![Screenshot:Key Pair](./ScreenShot/keypair.png) 
   
-5. Connect to the instance using SSH
+3. Connect to the instance using SSH
 
 ![Screenshot:Key Pair](./ScreenShot/connectToInstance.png) 
   
@@ -78,12 +79,14 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    - Go to your EC2 instance details in the AWS Management Console.
    - Under the "Security groups" section, click on the security group associated with your instance.
    - In the "Inbound rules" tab, add a custom TCP rule for port 8080.
+   - 
 ![Screenshot: Inbound Rule](./ScreenShot/Security_port.png)
 
 2. Access Jenkins in your browser:
 
    ```bash
    http://your-instance-ip:8080
+   
 ![Screenshot: Access Jenkins](./ScreenShot/jenkinsScreen.png)
 
 3. Retrieve the initial admin password:
@@ -135,22 +138,33 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    - In your terminal, open the public key file (usually `~/.ssh/id_rsa.pub`) and copy its content (starts with `ssh-rsa`).
    - Paste the public key into the "Key" field.
    - Give your key a meaningful title and click "Add SSH key".
+   - 
  ![Screenshot: Plugins](./ScreenShot/Ssh-Github.png)
 
 4. Open your Jenkins dashboard:
 
    - Create a new "Freestyle project" by clicking "New Item" on the Jenkins homepage.
+   - 
  ![Screenshot: Jenkins Project](./ScreenShot/Createafreestyleproject.png)
+
 5. Configure the project:
 
    - Add a project name and description.
+
 ![Screenshot: Jenkins Description](./ScreenShot/description.png)
+
    - Under the "Source Code Management" section, select "Git" and enter your GitHub repository URL.
+
 ![Screenshot: Jenkins Git Url](./ScreenShot/Git.png)
+
    - In the "Credentials" dropdown, click "Add" to add your private key. Paste the private key content generated earlier (beginning with `-----BEGIN OPENSSH PRIVATE KEY-----`).
+
 ![Screenshot: Jenkins Description](./ScreenShot/JenkinCred1.png)
+
 ![Screenshot: Jenkins Description](./ScreenShot/JenkinCred2.png)
+
 ![Screenshot: Jenkins Description](./ScreenShot/JenkinCred3.png)
+
    - Save your configuration.
 
 6. Build the project:
@@ -159,19 +173,24 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 ![Screenshot: Jenkins Description](./ScreenShot/BuildNow.png)
    - Monitor the build's console output to check the location of your project on the server.
 ![Screenshot: Jenkins Description](./ScreenShot/ConsoleLogJenkins.png)
+
 ### Automating Docker Build and Run
-Install a Docker on you EC2 instance
 
-      ```bash
-      sudo apt-get install docker.io.
-      sudo apt-get update
+#### Install Docker on your EC2 instance
 
-      
-Create one docker file in your project in my project it is already there
+1. Install Docker:
+
+   ```bash
+   sudo apt-get install docker.io
+   sudo apt-get update
+
+### Create a Docker File    
+1. Create a Dockerfile in your project directory. In my project, it's already present.
+
+
 ![Screenshot: Jenkins Description](./ScreenShot/DockerFile.png)
 
-Now I have To Build a Docker
-for that you need to give some permission
+2.Build Docker Image:
 
       ```bash
       sudo usermod -a -G docker $USER
@@ -181,20 +200,60 @@ for that you need to give some permission
 
 ![Screenshot: Docker](./ScreenShot/DockerContainer.png)
 
-Now Bind the docker port to 8000 and add that port in security group as we connected earlier
+3. Run Docker Container:
 
       ```bash
       docker run -d --name doclocker -p 8000:8000 doclocker
       docker ps
       
+![Screenshot: Docker](./ScreenShot/RunDocker.png)
+
+4. Bind Docker Port to 8000 and Update Security Group:
+
+   -Open your AWS Management Console.
+   -Navigate to the EC2 dashboard and select your instance.
+   -In the "Security groups" section, click on the associated security group.
+   -Add an inbound rule to allow traffic on port 8000.
+   -Save the changes.
+
+### Automate Docker Build and Run with Jenkins
+1. Go to the Jenkins dashboard.
+2. Open your job and navigate to the build steps 
+  
+      ````bash
+      docker build . -t doclocker
+      docker run -d --name doclocker -p 8000:8000 doclocker
+      
+![Screenshot:Jenkins/ Docker](./ScreenShot/JenkinsBuildStep.png)
+
+    -This script includes the Docker commands to build a Docker image named doclocker from the code in your repository and run a Docker container with the image. The -p flag maps port 8000 on your EC2 instance to port 8000 in the container.
+
+3. Save configuration and click on build now 
+    -After defining the build steps, save your configuration. Now, click on "Build Now" in the Jenkins job page. Jenkins will automatically retrieve the code from your GitHub repository, create a Docker image, and run the container in the background.
+
+![Screenshot:Jenkins/ Docker](./ScreenShot/3.png)
+
+![Screenshot:Jenkins/ Docker](./ScreenShot/2.png)
+
+![Screenshot:Jenkins/ Docker](./ScreenShot/1.png)
 
 
+### Conclusion
 
+In this comprehensive guide, we have walked through the process of setting up a robust CI/CD pipeline for your Node.js application using Jenkins, GitHub, and Docker. By following these steps, you've achieved an automated workflow that enhances development efficiency and ensures consistent deployments.
 
+Throughout this guide, you have:
 
+- Created an EC2 instance on AWS to serve as the platform for your CI/CD pipeline.
+- Installed Jenkins and configured it to automate various stages of your deployment process.
+- Integrated GitHub with Jenkins, allowing seamless code retrieval and building.
+- Generated SSH keys for secure communication between Jenkins and your GitHub repository.
+- Automated the Docker build and run process, ensuring your application is containerized and deployed efficiently.
 
+By harnessing the power of these tools, you've successfully orchestrated an end-to-end pipeline that handles everything from code changes to running your application in a Docker container. This setup not only streamlines your development workflow but also ensures that your application is deployed consistently across environments.
 
- 
+As you continue to refine and enhance your Node.js application, this CI/CD pipeline will serve as a foundation for maintaining a seamless and reliable development process. Feel free to explore further optimizations, customizations, and integrations to tailor the pipeline to your specific needs.
 
+Congratulations on setting up your Node.js CI/CD pipeline using Jenkins, GitHub, and Docker. Happy coding and deploying!
 
-
+_Pankaj_
