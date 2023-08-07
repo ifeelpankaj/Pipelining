@@ -62,6 +62,13 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    ```bash
    sudo apt-get install jenkins
    sudo apt-get update
+
+4. Start Jenkins
+   
+   ```bash
+   sudo systemctl start jenkins.service
+   sudo systemctl status jenkins
+   
 ![Screenshot: Installed Jenkins](./ScreenShot/startjenkins.png)
 
 ### Jenkins Setup
@@ -153,7 +160,33 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    - Monitor the build's console output to check the location of your project on the server.
 ![Screenshot: Jenkins Description](./ScreenShot/ConsoleLogJenkins.png)
 ### Automating Docker Build and Run
+Install a Docker on you EC2 instance
 
+      ```bash
+      sudo apt-get install docker.io.
+      sudo apt-get update
+
+      
+Create one docker file in your project in my project it is already there
+![Screenshot: Jenkins Description](./ScreenShot/DockerFile.png)
+
+Now I have To Build a Docker
+for that you need to give some permission
+
+      ```bash
+      sudo usermod -a -G docker $USER
+      sudo reboot
+      cd /var/lib/jenkins/workspace/Jenkins-Master
+      docker build . -t doclocker
+
+![Screenshot: Docker](./ScreenShot/DockerContainer.png)
+
+Now Bind the docker port to 8000 and add that port in security group as we connected earlier
+
+      ```bash
+      docker run -d --name doclocker -p 8000:8000 doclocker
+      docker ps
+      
 
 
 
