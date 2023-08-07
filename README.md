@@ -27,15 +27,15 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 1. Launch an EC2 instance using the AWS Management Console.
 
-   ![Screenshot: Instance](./ScreenShot/creating_instance.png)
+![Screenshot: Instance](./ScreenShot/creating_instance.png)
    
 3. Add a key pair for secure SSH access during instance creation.
 
-   ![Screenshot:Key Pair](./ScreenShot/keypair.png) 
+![Screenshot:Key Pair](./ScreenShot/keypair.png) 
   
 5. Connect to the instance using SSH
 
- ![Screenshot:Key Pair](./ScreenShot/keypair.png) 
+![Screenshot:Key Pair](./ScreenShot/connectToInstance.png) 
   
 
 ### Installing Jenkins
@@ -46,7 +46,8 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    sudo apt-get update
    sudo apt-get install openjdk-11-jdk
 
-   ![Screenshot: Installing Java](./ScreenShot/install_java.png)
+![Screenshot:Key Pair](./ScreenShot/install_java.png) 
+
 
    - Because Jenkins is made up of Java, we need to install Java on our Ubuntu machine.
   
@@ -61,7 +62,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    ```bash
    sudo apt-get install jenkins
    sudo apt-get update
-   ![Screenshot: Installed Jenkins](./ScreenShot/startjenkins.png)
+![Screenshot: Installed Jenkins](./ScreenShot/startjenkins.png)
 
 ### Jenkins Setup
 
@@ -70,13 +71,13 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    - Go to your EC2 instance details in the AWS Management Console.
    - Under the "Security groups" section, click on the security group associated with your instance.
    - In the "Inbound rules" tab, add a custom TCP rule for port 8080.
-      ![Screenshot: Inbound Rule](./ScreenShot/Security_port.png)
+![Screenshot: Inbound Rule](./ScreenShot/Security_port.png)
 
 2. Access Jenkins in your browser:
 
    ```bash
    http://your-instance-ip:8080
-      ![Screenshot: Access Jenkins](./ScreenShot/jenkinsScreen.png)
+![Screenshot: Access Jenkins](./ScreenShot/jenkinsScreen.png)
 
 3. Retrieve the initial admin password:
 
@@ -85,15 +86,15 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 4. Install the suggested plugins and create an admin user.
 
-   ![Screenshot: Plugins](./ScreenShot/InstallPluginsd.png)
+![Screenshot: Plugins](./ScreenShot/InstallPlugins.png)
 
 5. Create a admin user for jenkins
 
- ![Screenshot: UserJenkins](./ScreenShot/Create an Admin User.png)
+![Screenshot: UserJenkins](./ScreenShot/CreateanAdminUser.png)
  
 6. Start using Jenkins and configure any additional settings as needed.
 
-   ![Screenshot: Welcome Screen](./ScreenShot/Welcome Jenkins Screen.png)
+![Screenshot: Welcome Screen](./ScreenShot/WelcomeJenkinsScreen.png)
 
 ### Generating SSH Keys
 
@@ -113,7 +114,8 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 1. Clone the [MERN Stack Project Code](https://github.com/ifeelpankaj/locker) repository from GitHub.
 
- ![Screenshot: Repo](Git Repo.png)
+ ![Screenshot: Repo](./ScreenShot/GitRepo.png)
+ 
 2. Go to your GitHub settings:
 
    - Click on your profile picture in the top right corner and select "Settings".
@@ -126,25 +128,30 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    - In your terminal, open the public key file (usually `~/.ssh/id_rsa.pub`) and copy its content (starts with `ssh-rsa`).
    - Paste the public key into the "Key" field.
    - Give your key a meaningful title and click "Add SSH key".
- ![Screenshot: Plugins](Ssh-Github.png)
+ ![Screenshot: Plugins](./ScreenShot/Ssh-Github.png)
+
 4. Open your Jenkins dashboard:
 
    - Create a new "Freestyle project" by clicking "New Item" on the Jenkins homepage.
- ![Screenshot: Jenkins Project](Create a freestyle project.png)
+ ![Screenshot: Jenkins Project](./ScreenShot/Createafreestyleproject.png)
 5. Configure the project:
 
    - Add a project name and description.
+![Screenshot: Jenkins Description](./ScreenShot/description.png)
    - Under the "Source Code Management" section, select "Git" and enter your GitHub repository URL.
-![Screenshot: Jenkins Description](Create a freestyle project.png)
+![Screenshot: Jenkins Git Url](./ScreenShot/Git.png)
    - In the "Credentials" dropdown, click "Add" to add your private key. Paste the private key content generated earlier (beginning with `-----BEGIN OPENSSH PRIVATE KEY-----`).
-
+![Screenshot: Jenkins Description](./ScreenShot/JenkinCred1.png)
+![Screenshot: Jenkins Description](./ScreenShot/JenkinCred2.png)
+![Screenshot: Jenkins Description](./ScreenShot/JenkinCred3.png)
    - Save your configuration.
 
 6. Build the project:
 
    - Click "Build Now" on the project page.
+![Screenshot: Jenkins Description](./ScreenShot/BuildNow.png)
    - Monitor the build's console output to check the location of your project on the server.
-
+![Screenshot: Jenkins Description](./ScreenShot/ConsoleLogJenkins.png)
 ### Automating Docker Build and Run
 
 
