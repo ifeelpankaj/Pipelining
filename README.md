@@ -12,7 +12,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    4. [Generating SSH Keys](#generating-ssh-keys)
    5. [Integrating GitHub and Jenkins](#integrating-github-and-jenkins)
    6. [Automating Docker Build and Run](#automating-docker-build-and-run)
-   7. [Automate Docker Build and Run with Jenkins](#Automation-through-jenkis)
+   7. [Automate Docker Build and Run with Jenkins](#automation-through-jenkins)
 3. [Conclusion](#conclusion)
 
 ## Prerequisites
