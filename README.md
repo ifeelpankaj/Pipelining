@@ -184,7 +184,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
      sudo apt-get install docker.io
      sudo apt-get update
 
-### Create a Docker File    
+#### Create a Docker File    
 1. Create a Dockerfile in your project directory. In my project, it's already present.
 
 
@@ -217,6 +217,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
    -Save the changes.
 
 ### Automate Docker Build and Run with Jenkins
+
 1. Go to the Jenkins dashboard.
 2. Open your job and navigate to the build steps 
   
