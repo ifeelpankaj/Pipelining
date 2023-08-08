@@ -144,7 +144,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 4. Open your Jenkins dashboard:
 
    - Create a new "Freestyle project" by clicking "New Item" on the Jenkins homepage.
-   - 
+     
  ![Screenshot: Jenkins Project](./ScreenShot/Createafreestyleproject.png)
 
 5. Configure the project:
