@@ -120,7 +120,7 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 - After this, you will get a Public and Private Key.
 
 
-## Integrating GitHub and Jenkins
+### Integrating GitHub and Jenkins
 
 1. Clone the [MERN Stack Project Code](https://github.com/ifeelpankaj/locker) repository from GitHub.
 
