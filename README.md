@@ -190,13 +190,13 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 
 ![Screenshot: Jenkins Description](./ScreenShot/DockerFile.png)
 
-2.Build Docker Image:
+2. Build Docker Image:
 
-     ```bash
-      sudo usermod -a -G docker $USER
-      sudo reboot
-      cd /var/lib/jenkins/workspace/Jenkins-Master
-      docker build . -t doclocker
+   ```bash
+   sudo usermod -a -G docker $USER
+   sudo reboot
+   cd /var/lib/jenkins/workspace/Jenkins-Master
+   docker build . -t doclocker
 
 ![Screenshot: Docker](./ScreenShot/DockerContainer.png)
 
