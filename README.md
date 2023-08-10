@@ -54,9 +54,12 @@ Welcome to the comprehensive guide on creating a CI/CD pipeline for your Node.js
 2. Set up the location for Jenkins installation:
 
      ```bash
-     curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-     echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > 
-     /dev/null
+     curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+     /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+     echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+     https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+     /etc/apt/sources.list.d/jenkins.list > /dev/null
+s
 
 3. Install Jenkins:
 
